@@ -4,7 +4,12 @@
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        "backend/node_modules": true,
+        "backend/package-lock.json": true
     },
-    "hide-files.files": []
+    "hide-files.files": [
+        "backend/node_modules",
+        "backend/package-lock.json"
+    ]
 }
