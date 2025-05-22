@@ -1,16 +1,29 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem; /* space-y-3 */
+  gap: 1.25rem;
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
 }
 
 .form-input {
-  padding: 0.5rem; /* p-2 */
-  border: 1px solid #e2e8f0; /* border */
-  border-radius: 0.25rem; /* rounded */
+  padding: 0.75rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 1rem;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
 }

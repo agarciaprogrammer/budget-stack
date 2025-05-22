@@ -26,7 +26,7 @@ export default function ExpenseForm({onAdd}) {
         <form onSubmit={handleSubmit} className="form-container">
             <input 
                 type="text"
-                placeholder="Description"
+                placeholder="Descripción"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)} // Cambié onChangeCapture a onChange
                 required

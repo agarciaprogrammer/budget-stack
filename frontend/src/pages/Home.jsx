@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import '../styles/global.css';
 import ExpenseForm from '../components/ExpenseForm';
 import ExpenseList from '../components/ExpenseList';
@@ -22,9 +21,7 @@ export default function Home() {
       <h1 className="title">Budget Tracker</h1>
       <ExpenseForm onAdd={fetchExpenses} />
       <ExpenseList expenses={expenses} />
-      <Link to="/add-expense" className="btn">
-        Agregar Gasto
-      </Link>
+      
     </div>
   ); 
 }
