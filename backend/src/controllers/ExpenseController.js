@@ -1,12 +1,14 @@
 const expenseService = require('../services/ExpenseService');
 
 exports.addExpense = async (req, res) => {
-    try {
-        const expense = await expenseService.createExpense(req.body);
-        res.status(201).json(expense);
-    } catch (error) {
-        res.status(400).json({error: error.message});
-    } 
+  try {
+    console.log("Datos recibidos:", req.body); // ← Verifica qué llega
+    const expense = await expenseService.createExpense(req.body);
+    res.status(201).json(expense);
+  } catch (error) {
+    console.error("Error detallado:", error); // ← Más detalles
+    res.status(400).json({error: error.message});
+  } 
 };
 
 exports.getExpenses = async (req, res) => {

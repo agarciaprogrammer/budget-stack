@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
+import '../styles/components/ExpenseForm.css';
+import '../styles/global.css';
 
 export default function ExpenseForm({onAdd}) {
     const [description, setDescription] = useState('');
@@ -10,36 +12,36 @@ export default function ExpenseForm({onAdd}) {
         try {
             const response = await axios.post('http://localhost:3001/api/expenses', {
                 description,
-                amount: parseFloat(setAmount)
+                amount: parseFloat(amount) // ✅ Corregido aquí
             });
             onAdd(response.data);
             setDescription('');
             setAmount('');
         } catch (error) {
-            console.error('Error adding expense: ', error)
+            console.error('Error adding expense: ', error);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-3">
+        <form onSubmit={handleSubmit} className="form-container">
             <input 
                 type="text"
                 placeholder="Description"
                 value={description}
-                onChangeCapture={(e) => setDescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)} // Cambié onChangeCapture a onChange
                 required
-                className="w-full p-2 border rounded"
+                className="form-input"
             />
             <input
                 type="number"
                 placeholder="Gasto"
                 value={amount}
-                onChangeCapture={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmount(e.target.value)} // Cambié onChangeCapture a onChange
                 step="0.01"
                 required
-                className="w-full p-2 border rounded"
+                className="form-input"
             />
-            <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+            <button type="submit" className="btn">
                 Agregar Gasto
             </button>
         </form>

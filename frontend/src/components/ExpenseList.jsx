@@ -1,13 +1,21 @@
+import '../styles/components/ExpenseList.css';
+import '../styles/global.css';
+
 export default function ExpenseList({ expenses }) {
   return (
-    <div className="space-y-2">
-      <h2 className="text-xl font-bold">Tus Gastos</h2>
-      <ul className="divide-y">
+    <div className="expense-list">
+      <h2 className="list-title">Tus Gastos</h2>
+      <ul className="expense-items">
         {expenses.map(expense => (
-          <li key={expense.id} className="py-2">
+          <li key={expense.id} className="expense-item">
             <p>{expense.description}</p>
-            <p className="font-bold">${expense.amount.toFixed(2)}</p>
-            <p className="text-sm text-gray-500">
+            <p className="expense-amount">
+              {typeof expense.amount === 'number' 
+                ? `$${expense.amount.toFixed(2)}`
+                : `$${parseFloat(expense.amount).toFixed(2)}`
+              }
+            </p>
+            <p className="expense-date">
               {new Date(expense.createdAt).toLocaleDateString()}
             </p>
           </li>
