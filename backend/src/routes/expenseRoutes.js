@@ -4,5 +4,6 @@ const expenseController = require('../controllers/ExpenseController');
 
 router.post('/', expenseController.addExpense);
 router.get('/', expenseController.getExpenses);
+router.get('/', expenseController.getTotal);
 
 module.exports = router;

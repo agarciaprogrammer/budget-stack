@@ -1,7 +1,13 @@
-.expense-list {
+.expense-item {
   display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.expense-item p {
+  margin: 0 8px;
 }
 
 .list-title {
@@ -41,3 +47,29 @@
   font-size: 0.85rem;
   color: var(--text-secondary);
 }
+
+.expense-description {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expense-amount {
+  width: 200px;
+  text-align: right;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin: 0 2rem;
+  white-space: nowrap;
+}
+
+.expense-date {
+  width: 200px;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+

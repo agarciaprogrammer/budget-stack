@@ -8,9 +8,9 @@ export default function ExpenseList({ expenses }) {
       <ul className="expense-items">
         {expenses.map(expense => (
           <li key={expense.id} className="expense-item">
-            <p>{expense.description}</p>
+            <p className="expense-description">{expense.description}</p>
             <p className="expense-amount">
-              {typeof expense.amount === 'number' 
+              {typeof expense.amount === 'number'
                 ? `$${expense.amount.toFixed(2)}`
                 : `$${parseFloat(expense.amount).toFixed(2)}`
               }
@@ -19,6 +19,7 @@ export default function ExpenseList({ expenses }) {
               {new Date(expense.createdAt).toLocaleDateString()}
             </p>
           </li>
+
         ))}
       </ul>
     </div>

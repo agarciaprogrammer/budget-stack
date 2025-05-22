@@ -3,7 +3,6 @@ const Expense = require('../models/Expense');
 
 exports.createExpense = async (expenseData) => {
   const expenseRepo = getRepository(Expense);
-  // Convert amount to number if it comes as string
   const expense = expenseRepo.create({
     ...expenseData,
     amount: parseFloat(expenseData.amount)

@@ -52,3 +52,17 @@ body {
   background-color: var(--bg-primary);
   min-height: 100vh;
 }
+
+.total-container {
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.total-amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0.5rem 0 0;
+}

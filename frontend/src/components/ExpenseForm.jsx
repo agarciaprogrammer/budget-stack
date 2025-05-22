@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../styles/components/ExpenseForm.css';
 import '../styles/global.css';
 
-export default function ExpenseForm({onAdd}) {
+export default function ExpenseForm({onAdd, onCancel}) {
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState('');
 
@@ -12,7 +12,7 @@ export default function ExpenseForm({onAdd}) {
         try {
             const response = await axios.post('http://localhost:3001/api/expenses', {
                 description,
-                amount: parseFloat(amount) // ✅ Corregido aquí
+                amount: parseFloat(amount)
             });
             onAdd(response.data);
             setDescription('');
@@ -28,7 +28,7 @@ export default function ExpenseForm({onAdd}) {
                 type="text"
                 placeholder="Descripción"
                 value={description}
-                onChange={(e) => setDescription(e.target.value)} // Cambié onChangeCapture a onChange
+                onChange={(e) => setDescription(e.target.value)}
                 required
                 className="form-input"
             />
@@ -36,7 +36,7 @@ export default function ExpenseForm({onAdd}) {
                 type="number"
                 placeholder="Gasto"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)} // Cambié onChangeCapture a onChange
+                onChange={(e) => setAmount(e.target.value)}
                 step="0.01"
                 required
                 className="form-input"
@@ -44,6 +44,21 @@ export default function ExpenseForm({onAdd}) {
             <button type="submit" className="btn">
                 Agregar Gasto
             </button>
+
+            <div className="form-actions">
+                <button type="submit" className="btn">
+                Guardar
+                </button>
+                {onCancel && (
+                <button 
+                    type="button" 
+                    onClick={onCancel}
+                    className="btn-cancel"
+                >
+                    Cancelar
+                </button>
+            )}
+            </div>
         </form>
     );
 }
