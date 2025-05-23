@@ -29,3 +29,39 @@ exports.getTotal = async (req, res) => {
     res.status(500).json({error: 'Error calculating total'});
   }
 };
+
+exports.updateExpense = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { description, amount, date } = req.body;
+
+    if (!description || amount === undefined || amount === null) {
+      return res.status(400).json({ error: 'Descripción y monto son requeridos' });
+    }
+
+    const updateData = {
+      description,
+      amount: parseFloat(amount),
+      date: date || new Date()
+    };
+
+    const updatedExpense = await expenseService.updateExpense(id, updateData);
+    res.json(updatedExpense);
+  } catch (error) {
+    console.error('Error updating expense:', error);
+    res.status(400).json({ error: error.message });
+  }
+};
+
+exports.deleteExpense = async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (!ids || !Array.isArray(ids)) {
+      throw new Error('IDs inválidos');
+    }
+    const result = await expenseService.deleteExpenses(ids);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({error: error.message});
+  }
+};
